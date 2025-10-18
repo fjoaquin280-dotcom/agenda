@@ -8,12 +8,12 @@ import { AuthService } from './auth-service';
 export class ContactsService {
   aleatorio = Math.random();
   authService = inject(AuthService);
-
+ readonly URL_BASE = "https://agenda-api.somee.com/api/contacts";
   contacts: Contact[] = []
 
   /** Obtiene los contactos del backend */
   async getContacts() {
-    const res = await fetch("https://agenda-api.somee.com/api/contacts",
+    const res = await fetch(this.URL_BASE,
       {
         headers:{
           Authorization: "Bearer "+this.authService.token,
@@ -30,12 +30,20 @@ export class ContactsService {
   }
 
   /** Crea un contacto */
-  createContact(nuevoContacto:NewContact) {
-    const contacto:Contact = {
-      ...nuevoContacto,
-      id: Math.random().toString()
-    }
-    this.contacts.push(contacto);
+ async createContact(nuevoContacto:NewContact) {
+    const res = await fetch(this.URL_BASE, 
+      {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer "+this.authService.token,
+        },
+        body: JSON.stringify(nuevoContacto)
+      });
+    if(!res.ok) return;
+    const resContact:Contact = await res.json();
+    this.contacts.push(resContact);
+    return resContact;
   }
 
   editContact() { }
