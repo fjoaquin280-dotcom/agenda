@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Contact } from '../interfaces/contact';
+import { Contact, NewContact } from '../interfaces/contact';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,8 @@ export class ContactsService {
       image: "",
       company: "",
       address: "",
-      email: 'lbarletta@austral.edu.ar'
+      email: 'lbarletta@austral.edu.ar',
+      isFavourite: false
     },
   ]
 
@@ -39,18 +40,12 @@ export class ContactsService {
   }
 
   /** Crea un contacto */
-  createContact() {
-    const nuevoContacto:Contact = {
-      firstName: "Nuevo",
-      id: '',
-      lastName: 'Contacto',
-      address: '-',
-      email: '-',
-      image: '-',
-      number: '-',
-      company: '-'
+  createContact(nuevoContacto:NewContact) {
+    const contacto:Contact = {
+      ...nuevoContacto,
+      id: Math.random().toString()
     }
-    this.contacts.push(nuevoContacto);
+    this.contacts.push(contacto);
   }
 
   editContact() { }
@@ -62,3 +57,4 @@ export class ContactsService {
 
   setFavourite() { }
 }
+

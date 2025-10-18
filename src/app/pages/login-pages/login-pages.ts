@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './login-pages.css'
 })
 export class LoginPages {
-
+  login(loginForm:any){
+    console.log(loginForm)
+  }
 }
