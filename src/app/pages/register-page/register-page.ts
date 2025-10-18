@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UsersService } from '../../service/users-service';
 import { Spinner } from '../../components/spinner/spinner';
@@ -16,8 +16,7 @@ export class RegisterPage {
   isLoading = false;
   router = inject(Router);
 
-  async register(form:any){
-    console.log(form.value);
+  async register(form: NgForm){
     this.errorRegister = false; //Elimino el mensaje de error
     // Hago validación extra sobre el formulario
     if(!form.value.email || 
@@ -29,3 +28,12 @@ export class RegisterPage {
       this.errorRegister = true;
       return
     }
+    this.isLoading = true;
+    const res = await this.usersService.register(form.value);
+    if(res.ok){
+      this.router.navigate(["/login"])
+    }
+    this.isLoading = false;
+    this.errorRegister = true;
+  }
+}
