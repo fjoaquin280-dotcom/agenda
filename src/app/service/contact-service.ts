@@ -94,7 +94,7 @@ export class ContactsService {
 
   /** Marca/desmarca un contacto como favorito */
   async setFavourite(id:string | number ) {
-    const res = await fetch(this.URL_BASE+"/"+id+"favorite", 
+       const res = await fetch(this.URL_BASE+"/"+id+"/favorite", 
       {
         method: "POST",
         headers: {

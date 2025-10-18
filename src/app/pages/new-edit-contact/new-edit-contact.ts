@@ -52,7 +52,7 @@ export class NewEditContact implements OnInit {
      let res;
     // const res = await this.contactsService.createContact(nuevoContacto);
     if(this.idContacto()){
-      res = await this.contactsService.editContact({...nuevoContacto,id:this.idContacto()!.toString()})
+     res = await this.contactsService.editContact({...nuevoContacto,id:this.idContacto()!})
     } else {
       res = await this.contactsService.createContact(nuevoContacto);
     }
