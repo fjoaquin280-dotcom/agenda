@@ -6,14 +6,9 @@
   <span>Acciones</span>
  </div>
  <ul>
-  @for (contacto of contactos; track $index) {
-    <li>
-      <span>{{contacto.nombre}}</span>
-      <span>{{contacto.telefono}}</span>
-      <span>{{contacto.email}}</span>
-      <span>-</span>
-      <span>-</span>
-    </li>
+  @for (contactoIndividual of listaContactos; track $index) {
+    <app-contac-list-item [contact]="contactoIndividual"></app-contac-list-item>
   }
+  
 
  </ul>

@@ -1,24 +1,38 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ContactListItem } from '../../components/Contac-list-item/contac-list-item';
+import { Contact } from '../../interfaces/contact';
 
 @Component({
   selector: 'app-contact-page',
-  imports: [],
+   imports: [RouterModule,ConctactListItem],
   templateUrl: './contact-page.html',
   styleUrl: './contact-page.css'
 })
 export class ContactPage {
   
-  contactos = [
+   listaContactos:Contact[] = [
     {
-      nombre: 'Gonzalo',
-      telefono: 3476123123,
-      email: 'gbechara@austral.edu.ar'
+      id: "1",
+      firstName: 'Gonzalo',
+      lastName: "Bechara",
+      number: "3476123123",
+      image: "",
+      company: "",
+      address: "",
+      email: 'gbechara@austral.edu.ar',
+      isFavourite: true,
     },
     {
-      nombre: 'Lucho',
-      telefono: 3471234234,
+     id: "2",
+      firstName: 'Lucho',
+      lastName: "Barletta",
+      number: "3471234234",
+      image: "",
+      company: "",
+      address: "",
       email: 'lbarletta@austral.edu.ar'
-    }
+    },
   ]
 
 }
