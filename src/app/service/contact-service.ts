@@ -25,7 +25,16 @@ export class ContactsService {
   }
 
   /** Devuelve un contato en particular segun su ID */
-  getContactById() {
+ async getContactById(id: string | number) {
+    const res = await fetch(this.URL_BASE+"/"+id, 
+      {
+        headers: {
+          Authorization: "Bearer "+this.authService.token,
+        },
+      });
+    if(!res.ok) return;
+    const resContact:Contact = await res.json();
+    return resContact;
 
   }
 

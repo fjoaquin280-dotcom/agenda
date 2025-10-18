@@ -36,6 +36,10 @@ export const routes: Routes = [
         path: "contacts/:id",
         component: ContactDetailsPages
       },
+       {
+        path: "contacts/:idContacto/edit",
+        component: NewEditContact
+      },
       {
         path: "groups",
         component: GroupsPage
