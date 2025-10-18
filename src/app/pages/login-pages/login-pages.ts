@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../service/auth-service';
 
 @Component({
-  selector: 'app-login-pages',
+  selector: 'app-login-page',
   imports: [RouterModule,FormsModule],
   templateUrl: './login-pages.html',
-  styleUrl: './login-pages.css'
+  styleUrl: './login-pages.scss'
 })
-export class LoginPages {
+export class LoginPage {
+
   errorLogin = false;
+  authService = inject(AuthService);
 
   login(form:any){
     console.log(form)
     this.errorLogin = false;
-    if(!form.email || !form.password){
+    if(!form.value.email || !form.value.password){
       this.errorLogin = true;
       return
     }
+    this.authService.login(form.value)
   }
 }
+

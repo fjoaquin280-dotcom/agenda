@@ -62,3 +62,5 @@ Angular CLI no incluye por defecto un framework de pruebas end-to-end. Puedes el
 
 Para obtener más información sobre el uso de Angular CLI, incluyendo referencias detalladas de comandos, visita la página [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli)
 
+# Backend
+Si queremos saber que capacidades tiene el backend de este proyecto, podemos dirigirnos a su [swagger](https://agenda-api.somee.com/swagger/index.html)
