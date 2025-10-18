@@ -1,38 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ContactListItem } from '../../components/Contac-list-item/contac-list-item';
+import { ContactListItem } from '../../components/contac-list-item/contac-list-item';
 import { Contact } from '../../interfaces/contact';
+import { AuthService } from '../../service/auth-service';
+import { ContactsService } from '../../service/contact-service';
 
 @Component({
-  selector: 'app-contact-page',
-   imports: [RouterModule,ConctactListItem],
+  selector: 'app-contacts-page',
+  imports: [RouterModule,ContactListItem],
   templateUrl: './contact-page.html',
-  styleUrl: './contact-page.css'
+  styleUrl: './contact-page.scss'
 })
-export class ContactPage {
-  
-   listaContactos:Contact[] = [
-    {
-      id: "1",
-      firstName: 'Gonzalo',
-      lastName: "Bechara",
-      number: "3476123123",
-      image: "",
-      company: "",
-      address: "",
-      email: 'gbechara@austral.edu.ar',
-      isFavourite: true,
-    },
-    {
-     id: "2",
-      firstName: 'Lucho',
-      lastName: "Barletta",
-      number: "3471234234",
-      image: "",
-      company: "",
-      address: "",
-      email: 'lbarletta@austral.edu.ar'
-    },
-  ]
+export class ContactsPage {
 
-}
+  authService = inject(AuthService);
+  contactsService = inject(ContactsService);
+
