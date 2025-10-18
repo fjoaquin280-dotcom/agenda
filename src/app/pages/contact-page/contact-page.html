@@ -1,2 +1,19 @@
-<p>contact-page works!</p>
-<a routerLink="login">Ir a login</a>
+ <div>
+  <span>Nombre</span>
+  <span>Telefono</span>
+  <span>Email</span>
+  <span>Grupos</span>
+  <span>Acciones</span>
+ </div>
+ <ul>
+  @for (contacto of contactos; track $index) {
+    <li>
+      <span>{{contacto.nombre}}</span>
+      <span>{{contacto.telefono}}</span>
+      <span>{{contacto.email}}</span>
+      <span>-</span>
+      <span>-</span>
+    </li>
+  }
+
+ </ul>

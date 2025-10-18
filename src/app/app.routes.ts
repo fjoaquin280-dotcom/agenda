@@ -1,19 +1,26 @@
 import { Routes } from '@angular/router';
-import { LoginPage } from './pages/login-page/login-page';
-import { ContactsPage } from './pages/contacts-page/contacts-page';
-import { ContactDetailsPage } from './pages/contact-details-page/contact-details-page';
+import { LoginPages } from './pages/login-pages/login-pages';
+import { ContactPage } from './pages/contact-page/contact-page';
+import { ContactDetailsPages } from './pages/contact-details-pages/contact-details-pages';
+import { LoggedLayout } from './pages/layouts/logged-layout/logged-layout';
 
 export const routes: Routes = [
     {
         path: "login",
-        component: LoginPage
+        component: LoginPages
     },
     {
+    path: "",
+    component: LoggedLayout,
+    children: [
+        {
         path: "",
-        component: ContactsPage
+        component: ContactPage
     },
     {
         path: "contacts/:id",
-        component: ContactDetailsPage
+        component: ContactDetailsPages
     },
+    ]
+  },
 ];
