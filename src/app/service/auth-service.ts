@@ -6,12 +6,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  loggeado:boolean = false;
   router = inject(Router);
   token : null|string = localStorage.getItem("token");
 
   async login(loginData: LoginData){
-    this.loggeado = true;
     const res = await fetch("https://agenda-api.somee.com/api/authentication/authenticate",
       {
         method: "POST",
@@ -24,11 +22,11 @@ export class AuthService {
       localStorage.setItem("token",this.token);
       this.router.navigate(["/"])
     }
-    console.log("Respuesta del back",res);
   }
 
   logout(){
-    this.loggeado = false;
+    this.token = null;
+    this.router.navigate(["/login"]);
   }
 }
 
