@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, input, OnInit, viewChild } from '@angular/core';
-import { Form, FormsModule, NgForm } from '@angular/forms';
+import { Form, FormGroup, FormsModule, NgControl, NgForm, NgModel } from '@angular/forms';
 import { Contact, NewContact } from '../../interfaces/contact';
 import { ContactsService } from '../../service/contact-service';
 import { Router } from '@angular/router';
@@ -16,16 +16,27 @@ export class NewEditContact implements OnInit {
   errorEnBack = false;
  idContacto = input<number>();
   contactoOriginal:Contact|undefined = undefined;
-  form = viewChild<ElementRef<Form>>('newContactForm');
+   form = viewChild<NgForm>('newContactForm');
 
-  
   async ngOnInit() {
     if(this.idContacto()){
       this.contactoOriginal = await this.contactsService.getContactById(this.idContacto()!);
-      console.log(this.contactoOriginal)
+      // Cambio los valores del formulario
+      this.form()?.setValue({
+        firstName: this.contactoOriginal!.firstName,
+        lastName: this.contactoOriginal!.lastName,
+        address: this.contactoOriginal!.address,
+        email: this.contactoOriginal!.email,
+        image: this.contactoOriginal!.image,
+        number: this.contactoOriginal!.number,
+        company: this.contactoOriginal!.company,
+        isFavourite: this.contactoOriginal!.isFavourite
+      })
     }
   }
-  async createContact(form:NgForm){
+ /** Revisa si estamos editando o creando un contacto y ejecuta la función correspondiente del servicio de contactos */
+  async handleFormSubmission(form:NgForm){
+
     this.errorEnBack = false;
     const nuevoContacto: NewContact ={
       firstName: form.value.firstName,
@@ -38,11 +49,19 @@ export class NewEditContact implements OnInit {
       isFavourite: form.value.isFavorite
     }
 
-    const res = await this.contactsService.createContact(nuevoContacto);
+     let res;
+    // const res = await this.contactsService.createContact(nuevoContacto);
+    if(this.idContacto()){
+      res = await this.contactsService.editContact({...nuevoContacto,id:this.idContacto()!.toString()})
+    } else {
+      res = await this.contactsService.createContact(nuevoContacto);
+    }
+
     if(!res) {
       this.errorEnBack = true;
       return
     };
     this.router.navigate(["/contacts",res.id]);
   }
+
 }
