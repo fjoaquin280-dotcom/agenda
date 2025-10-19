@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './contact-details-pages.html',
   styleUrl: './contact-details-pages.scss'
 })
-export class ContactDetailsPage implements OnInit {
+export class ContactDetailsPages implements OnInit {
   idContacto = input.required<string>();
   readonly contactService = inject(ContactsService);
   contacto: Contact | undefined;
@@ -19,9 +19,9 @@ export class ContactDetailsPage implements OnInit {
   async ngOnInit() {
     if(this.idContacto()){
       // Si encuentro el contacto en el array del servicio lo uso, mientras tanto cargo el contacto del backend por si hubo cambios en el contacto
-      this.contacto = this.contacService.contacts.find(contacto => contacto.id.toString() === this.idContacto());
+      this.contacto = this.contactService.contacts.find(contacto => contacto.id.toString() === this.idContacto());
       if(!this.contacto) this.cargandoContacto = true;
-      const res = await this.contacService.getContactById(this.idContacto());
+      const res = await this.contactService.getContactById(this.idContacto());
       if(res) this.contacto = res;
       this.cargandoContacto = false;
     }
@@ -29,14 +29,14 @@ export class ContactDetailsPage implements OnInit {
 
   async toggleFavorite(){
     if(this.contacto){
-      const res = await this.contacService.setFavourite(this.contacto.id);
+      const res = await this.contactService.setFavourite(this.contacto.id);
       if(res) this.contacto.isFavourite = !this.contacto.isFavourite;
     }
   }
 
   async deleteContact(){
     if(this.contacto){
-      const res = await this.contactservice.deleteContact(this.contacto.id);
+      const res = await this.contactService.deleteContact(this.contacto.id);
       if(res) this.router.navigate(['/']);
     }
   }

@@ -3,11 +3,19 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../service/auth-service';
 import Swal from 'sweetalert2'
 
+
+@Component({
+  selector: 'app-logged-layout',
+  templateUrl: './logged-layout.html',
+  imports: [RouterOutlet], 
+  standalone: true
+})
+
 @Component({
   selector: 'app-logged-layout',
   imports: [],
   templateUrl: './logged-layout.html',
-  styleUrl: './logged-layout.css'
+  styleUrl: './logged-layout.scss'
 })
 export class LoggedLayout {
   authService = inject(AuthService);

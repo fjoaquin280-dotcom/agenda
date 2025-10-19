@@ -8,14 +8,16 @@ import { Router } from '@angular/router';
 export class AuthService implements OnInit {
   router = inject(Router);
   token : null|string = localStorage.getItem("token");
-  revisionTokenInterval:number|undefined;
 
-  ngOnInit(): void {
-    // Si tengo sesion iniciada reviso que no este vencida
+revisionTokenInterval: ReturnType<typeof setTimeout> | undefined;
+
+ngOnInit(): void {
+    // Si tengo sesión iniciada reviso que no esté vencida
     if (this.token) {
-      this.revisionTokenInterval = this.revisionToken()
+        this.revisionTokenInterval = this.revisionToken();
     }
-  }
+}
+
 
     /** Autentica al usuario en el back y nos devuelve el token */
   async login(loginData: LoginData){
