@@ -7,7 +7,7 @@ import { ContactsService } from '../../service/contact-service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-contacts-page',
+  selector: 'app-contact-list-item',
   imports: [RouterModule,ContactListItem, FormsModule],
   templateUrl: './contact-page.html',
   styleUrl: './contact-page.scss'
