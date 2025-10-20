@@ -12,14 +12,13 @@ export class AuthService implements OnInit {
 revisionTokenInterval: ReturnType<typeof setTimeout> | undefined;
 
 ngOnInit(): void {
-    // Si tengo sesión iniciada reviso que no esté vencida
+   
     if (this.token) {
         this.revisionTokenInterval = this.revisionToken();
     }
 }
 
 
-    /** Autentica al usuario en el back y nos devuelve el token */
   async login(loginData: LoginData){
     const res = await fetch("https://agenda-api.somee.com/api/authentication/authenticate",
       {
@@ -35,14 +34,14 @@ ngOnInit(): void {
     }
   }
 
-  /** Cierra sesión */
+ 
   logout(){
     this.token = null;
     localStorage.removeItem("token");
     this.router.navigate(["/login"]);
   }
 
-  /** Revisa cada 10 minutos que el token siga siendo valido */
+  
   revisionToken() {
     return setInterval(() => {
       if (this.token) {

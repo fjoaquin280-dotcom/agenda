@@ -6,7 +6,7 @@ import { NewUser } from '../interfaces/user';
 })
 export class UsersService {
   
-  /** Registar el usuario en el back */
+
   async register(registerData:NewUser){
     return await fetch("https://agenda-api.somee.com/api/Users", 
       {

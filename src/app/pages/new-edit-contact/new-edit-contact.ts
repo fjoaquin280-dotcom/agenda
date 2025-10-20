@@ -23,7 +23,6 @@ isLoading = false;
   async ngOnInit() {
     if(this.idContacto()){
       this.contactoOriginal = await this.contactsService.getContactById(this.idContacto()!);
-      // Cambio los valores del formulario
       this.form()?.setValue({
         firstName: this.contactoOriginal!.firstName,
         lastName: this.contactoOriginal!.lastName,
@@ -36,7 +35,7 @@ isLoading = false;
       })
     }
   }
- /** Revisa si estamos editando o creando un contacto y ejecuta la función correspondiente del servicio de contactos */
+ 
   async handleFormSubmission(form:NgForm){
 
     this.errorEnBack = false;
@@ -52,7 +51,7 @@ isLoading = false;
     }
 
      let res;
-    // const res = await this.contactsService.createContact(nuevoContacto);
+ 
      this.isLoading = true;
     if(this.idContacto()){
      res = await this.contactsService.editContact({...nuevoContacto,id:this.idContacto()!})
