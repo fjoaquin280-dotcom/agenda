@@ -21,4 +21,4 @@ export class ContactPage implements OnInit {
   contactsService = inject(ContactsService);
 
 }
-
+  

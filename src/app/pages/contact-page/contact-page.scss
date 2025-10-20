@@ -1,5 +1,89 @@
 @use "./../../../../public/styles/forms-pages.scss";
 
-.error{
-    color: var(--color-error);
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  padding: 2rem;
 }
+
+
+.error {
+  color: var(--color-error);
+}
+
+
+div {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr;
+  background-color: #007b7b;
+  color: white;
+  padding: 0.75rem;
+
+ border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+
+  span {
+    text-align: center;
+  }
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 0.5rem;
+
+    a[routerLink] {
+      text-decoration: none;
+      color: inherit;
+
+  app-contact-list-item {
+        display: block;
+        padding: 1rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.25s;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+}
+
+
+a[routerLink="/contacts/new"] {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+
+ background-color: #ff4081;
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e91e63;
+  }
+}
+
