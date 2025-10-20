@@ -112,6 +112,7 @@
     } @else {
       <button [disabled]="newContactForm.invalid || isLoading">Crear</button>
     }
+
     @if(isLoading){
       <app-spinner></app-spinner>
     }

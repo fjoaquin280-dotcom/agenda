@@ -1,4 +1,5 @@
 <!-- <a routerLink="login">Ir a login</a> -->
+
 <div class="header-row">
   <span>Nombre</span>
   <span>Telefono</span>
@@ -9,10 +10,24 @@
 
 <ul>
   @for (contactoIndividual of contactsService.contacts; track $index) {
-    <a [routerLink]="['/contacts', contactoIndividual.id]">
-      <app-contact-list-item [contact]="contactoIndividual"></app-contact-list-item>
-    </a>
+    <li>
+      <a [routerLink]="['/contacts', contactoIndividual.id]">
+        <app-contact-list-item [contact]="contactoIndividual"></app-contact-list-item>
+      </a>
+
+      <!-- Detalle del contacto directamente visible -->
+      <div class="contact-detail">
+        <h2>{{contactoIndividual.firstName}} {{contactoIndividual.lastName}}</h2>
+        <p>Email: {{contactoIndividual.email}}</p>
+        <p>Teléfono: {{contactoIndividual.number}}</p>
+        @if (contactoIndividual.isFavourite) {
+          <p class="star">⭐ Favorito</p>
+        }
+        <a [routerLink]="['/contacts', contactoIndividual.id, 'edit']">Editar</a>
+        <button (click)="contactsService.deleteContact(contactoIndividual.id)">Eliminar</button>
+      </div>
+    </li>
   }
 </ul>
 
-<a routerLink="/contacts/new">+</a>
+<a class="add-contact-button" routerLink="/contacts/new">+</a>
