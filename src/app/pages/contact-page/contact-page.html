@@ -8,16 +8,24 @@
 </div>
 
 
-  
 <ul>
   @for (contactoIndividual of contactsService.contacts; track $index) {
-    <li>
+    <li [class.favourite]="contactoIndividual.isFavourite === true">
       <a [routerLink]="['/contacts', contactoIndividual.id]" class="contact-link">
         <span>{{ contactoIndividual.firstName }} {{ contactoIndividual.lastName }}</span>
         <span>{{ contactoIndividual.number }}</span>
         <span>{{ contactoIndividual.email }}</span>
         <span>{{ contactoIndividual.company }}</span>
       </a>
+      <span>
+        <button (click)="openDeleteModal(contactoIndividual.id)">Borrar</button>
+        <a [routerLink]="['/contacts', contactoIndividual.id, 'edit']">Editar</a>
+      </span>
+      <span>
+        @if (contactoIndividual.isFavourite === true) {
+          ⭐
+        }
+      </span>
     </li>
   }
 </ul>

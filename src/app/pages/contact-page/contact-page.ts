@@ -19,11 +19,9 @@ export class ContactPage implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.contactsService.getContacts();
   }
-}
-
-
-
-
-
-
   
+openDeleteModal(id: number | string): void {
+  console.log('Abrir modal para borrar contacto con ID:', id);
+
+}
+}
