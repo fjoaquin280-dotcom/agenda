@@ -6,51 +6,90 @@
   color: #333;
 }
 
-// Título del contacto
-h1 {
+.contact-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-info h1 {
   font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #2a4d8f;
+  text-transform: capitalize;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
-  color: #2a4d8f;
-}
 
-// Información del contacto
-p {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-}
+  label {
+    font-weight: 600;
+    width: 100px;
+    color: #555;
+  }
 
-// Botones de acción
-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: #6c63ff;
-  color: white;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #574fd6;
+  span {
+    font-size: 1rem;
+    color: #333;
   }
 }
 
-// Enlace de edición
-a {
-  display: inline-block;
-  margin-top: 1rem;
-  font-weight: 600;
-  color: #2a4d8f;
-  text-decoration: none;
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
 
-  &:hover {
-    text-decoration: underline;
+  button,
+  a {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+  }
+
+  .fav {
+    background-color: #f0ad4e;
+
+    &:hover {
+      background-color: #ec971f;
+    }
+  }
+
+  .edit {
+    background-color: #6c63ff;
+
+    &:hover {
+      background-color: #574fd6;
+    }
+  }
+
+  .delete {
+    background-color: #ff4d4d;
+
+    &:hover {
+      background-color: #d93636;
+    }
   }
 }
 
-// Estrella de favorito
-p.star {
+.loading,
+.not-found {
+  font-size: 1.2rem;
+  color: #888;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.star {
   font-size: 1.5rem;
   color: gold;
   margin-top: 0.5rem;

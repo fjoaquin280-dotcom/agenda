@@ -9,5 +9,5 @@ export interface Contact {
   company: string
   isFavourite?: boolean
 }
-
+/** Interfaz que es igual a Contact pero sin ID */
 export type NewContact = Omit<Contact,"id">;

@@ -6,16 +6,16 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-list-item',
+  standalone: true,
   imports: [RouterModule],
   templateUrl: './contac-list-item.html',
   styleUrl: './contac-list-item.scss'
 })
 export class ContactListItem {
   contact = input.required<Contact>();
-  aleatorio = Math.random();
   contactsService = inject(ContactsService);
 
-  openDeleteModal(){
+  openDeleteModal() {
     Swal.fire({
       title: "¿Desea borrar el contacto?",
       showDenyButton: true,
@@ -24,7 +24,7 @@ export class ContactListItem {
       cancelButtonText: "Cancelar",
       denyButtonText: `Eliminar definitivamente`
     }).then((result) => {
-      if (result.isDenied) { 
+      if (result.isDenied) {
         this.contactsService.deleteContact(this.contact().id);
       }
     });
