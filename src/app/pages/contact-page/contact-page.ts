@@ -8,20 +8,22 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-list-item',
-  imports: [RouterModule,ContactListItem, FormsModule],
+  imports: [RouterModule, ContactListItem, FormsModule],
   templateUrl: './contact-page.html',
-  styleUrl: './contact-page.scss'
+  styleUrls: ['./contact-page.scss']
 })
 export class ContactPage implements OnInit {
-  ngOnInit(): void {
-    this.contactsService.getContacts();
-  }
-
   authService = inject(AuthService);
   contactsService = inject(ContactsService);
 
+  async ngOnInit(): Promise<void> {
+    await this.contactsService.getContacts();
+  }
 }
-  
+
+
+
+
 
 
   

@@ -7,12 +7,20 @@
   <span>Acciones</span>
 </div>
 
+
+  
 <ul>
   @for (contactoIndividual of contactsService.contacts; track $index) {
-    <a [routerLink]="['/contacts', contactoIndividual.id]">
-      <app-contact-list-item [contact]="contactoIndividual"></app-contact-list-item>
-    </a>
+    <li>
+      <a [routerLink]="['/contacts', contactoIndividual.id]" class="contact-link">
+        <span>{{ contactoIndividual.firstName }} {{ contactoIndividual.lastName }}</span>
+        <span>{{ contactoIndividual.number }}</span>
+        <span>{{ contactoIndividual.email }}</span>
+        <span>{{ contactoIndividual.company }}</span>
+      </a>
+    </li>
   }
 </ul>
+
 
 <a routerLink="/contacts/new" class="fab-button">+</a>
