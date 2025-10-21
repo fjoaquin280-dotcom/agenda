@@ -11,13 +11,12 @@
   box-sizing: border-box;
 }
 
-// Layout general
+
 .layout {
   display: flex;
   height: 100vh;
 }
 
-// Barra lateral celeste
 .sidebar {
   width: 180px;
   background-color: #e0e8f9;
@@ -51,14 +50,12 @@
   }
 }
 
-// Contenido principal
 .main-content {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
 }
 
-// Encabezado de columnas
 .header-row {
   display: grid;
   grid-template-columns: 18% 18% 26% 18% 20%;
@@ -76,7 +73,7 @@
   }
 }
 
-// Lista de contactos
+
 ul {
   list-style: none;
   padding: 1rem 0;
@@ -104,7 +101,7 @@ ul {
   }
 }
 
-// Botón flotante
+
 .add-contact-button {
   position: fixed;
   bottom: 2rem;
@@ -248,12 +245,12 @@ li span a {
 }
 
 li span button {
-  background-color: #e74c3c; // rojo para "Borrar"
+  background-color: #e74c3c; 
   color: white;
 }
 
 li span a {
-  background-color: #3498db; // azul para "Editar"
+  background-color: #3498db; 
   color: white;
 }
 
