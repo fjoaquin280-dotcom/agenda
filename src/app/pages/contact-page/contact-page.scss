@@ -179,3 +179,24 @@ ul {
     }
   }
 }
+.fab-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #6c63ff;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 56px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #574fd6;
+  }
+}
